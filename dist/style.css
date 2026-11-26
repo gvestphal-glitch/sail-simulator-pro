@@ -1,0 +1,325 @@
+:root{color-scheme:dark;--bg:#102022;--panel:#192b2e;--edge:#345053;--text:#f0f5ee;--muted:#a7bcb7;--lime:#ddf881;font-family:system-ui,sans-serif;background:var(--bg);color:var(--text)}*{box-sizing:border-box}body{margin:0}header{height:64px;border-bottom:1px solid var(--edge);display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1440px)/2));gap:12px}.brand{font-size:14px;font-weight:850;letter-spacing:.17em;white-space:nowrap}.flag{color:var(--lime);font-size:23px;margin-right:10px}.location,.eyebrow,.paneltitle,.maptag,small,.mapbottom,.raceinfo,.status{font-family:ui-monospace,monospace;letter-spacing:.07em}.location,.eyebrow,.note,small,.mapbottom{color:var(--muted)}.location{font-size:11px}.location span{color:var(--lime)}main{max-width:1488px;padding:24px;margin:auto}.intro{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:20px}.eyebrow{font-size:11px;margin:0 0 6px}.intro h1{font-size:clamp(36px,6vw,72px);line-height:1;margin:0;letter-spacing:-.075em}.intro h1 span{color:var(--lime)}.status{background:#223638;border:1px solid var(--edge);padding:8px 10px;font-size:11px;border-radius:5px}.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--lime);margin-right:7px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 292px;gap:12px}.chart{position:relative;min-height:505px;border:1px solid var(--edge);border-radius:9px;overflow:hidden;background:#163c42}.chart canvas{display:block;width:100%;height:100%;position:absolute;inset:0}.maptop,.mapbottom{position:absolute;left:14px;right:14px;display:flex;justify-content:space-between;align-items:center;gap:8px}.maptop{top:13px}.mapbottom{bottom:13px;font-size:10px;pointer-events:none}.maptag,.mapbottom span{background:#12282bde;padding:6px 9px;border-radius:4px}.maptag{font-size:11px;color:var(--lime)}aside{display:grid;align-content:stretch;gap:10px}.panel,.helm,details{background:var(--panel);border:1px solid var(--edge);border-radius:8px;padding:13px}.paneltitle{font-size:11px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;min-height:22px;margin-bottom:7px}.paneltitle button{padding:2px 8px}.classes{display:grid;grid-template-columns:1fr 1fr;gap:7px}.classes button{text-align:left;font-weight:750}.classes small{display:block;margin-top:3px;letter-spacing:0;font-size:10px}.classes button[aria-pressed=true]{border-color:var(--lime);color:var(--lime)}button{cursor:pointer;color:var(--text);background:#21393b;border:1px solid #466164;border-radius:5px;padding:8px 10px;font:inherit;font-size:13px;touch-action:manipulation}button:hover{border-color:var(--lime)}button:focus-visible,a:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--lime);outline-offset:3px}.action{background:var(--lime);color:#172321;width:100%;border:0;margin-top:8px;display:flex;justify-content:space-between;font-weight:850}.raceinfo{display:flex;justify-content:space-between;gap:8px;margin-top:10px;font-size:10px}.metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px 7px}.metrics small,.helm small{display:block;font-size:9px}.metrics strong{font-size:13px;display:block;margin-top:4px}.note{font-size:11px;line-height:1.4;margin-top:8px}a{color:var(--lime);text-decoration:none}a:hover{text-decoration:underline}.source-link{font-size:12px}.helm{margin-top:12px;display:flex;align-items:center;gap:18px;justify-content:space-between}.telemetry{display:flex;gap:clamp(12px,3vw,35px)}.telemetry strong{display:block;font-size:20px;white-space:nowrap;margin-top:4px}.steering{display:flex;align-items:center;gap:6px}.steering button{font-size:22px;padding:5px 14px;touch-action:none}.steering button.active{background:var(--lime);color:var(--bg)}.sheets{width:min(30%,290px);flex-shrink:0}.sheets label{display:block;font-size:12px}.sheets label[hidden]{display:none}.sheets output{float:right;color:var(--lime)}input{display:block;accent-color:var(--lime);width:100%;margin:4px 0}details{margin-top:12px;color:var(--muted);font-size:13px}summary{cursor:pointer;color:var(--text)}details p{max-width:80ch;line-height:1.5}@media(max-width:760px){main{padding:14px}header{padding:0 14px;height:53px}.location{font-size:9px}.intro{align-items:start;flex-direction:column}.layout{grid-template-columns:1fr}.chart{min-height:390px}.helm{position:sticky;bottom:0;z-index:2;flex-wrap:wrap;gap:8px;padding:9px}.sheets{width:100%;display:flex;gap:15px}.sheets label{flex:1}aside{grid-template-columns:1fr 1fr}.telemetry strong{font-size:15px}.steering small{display:none}}@media(max-width:380px){.chart{min-height:340px}.telemetry{gap:8px}.steering button{padding:4px 9px}}
+.chart canvas[hidden],#map-note[hidden]{display:none}.chart #sea3d{background:#83a9ba}.mapbottom button{pointer-events:auto;padding:5px 8px;font-size:10px}.chart{min-height:550px}.maptop button{background:#142d33e8}.maptag{backdrop-filter:blur(4px)}@media(max-width:760px){.chart{min-height:390px}}@media(max-width:380px){.chart{min-height:340px}}
+.chart .wind-instrument{position:absolute;left:14px;bottom:47px;display:flex;align-items:center;gap:8px;padding:7px 10px 7px 6px;border:1px solid #749b9766;border-radius:10px;background:#102426e8;pointer-events:none;box-shadow:0 3px 12px #10202255}.chart .wind-instrument canvas{display:block;position:static;width:122px;height:122px}.wind-reads{display:grid;gap:8px;min-width:69px}.wind-reads small,.wind-reads strong,.wind-reads span{display:block;white-space:nowrap}.wind-reads small{font-size:9px}.wind-reads strong{font:700 13px ui-monospace,monospace;margin-top:2px}.wind-reads span{font-size:11px;color:var(--muted)}.wind-reads .wind-app{color:var(--lime)}.wind-reads .wind-true{color:#7edaf4}.heading-display canvas{width:130px;height:17px;display:block;margin-top:2px}.heading-display small{max-width:150px}.heading-display strong{margin-top:1px}@media(max-width:760px){.chart .wind-instrument{left:8px;bottom:42px;gap:4px;padding:4px 6px 4px 2px}.chart .wind-instrument canvas{width:90px;height:90px}.wind-reads{gap:4px;min-width:58px}.wind-reads strong{font-size:11px}.wind-reads span,.wind-reads small{font-size:9px}.heading-display canvas{width:110px;height:15px}.heading-display small{max-width:115px;font-size:8px}}
+.course-choice{margin-top:9px;font-size:11px;color:var(--muted)}
+.sheets label{min-width:0}.sheets output{font-size:11px;white-space:nowrap}@media(max-width:480px){.sheets output{float:none;display:block}}
+
+.view-controls{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:5px}.view-controls button{white-space:nowrap}.view-controls button[aria-pressed=true]{border-color:var(--lime);color:var(--lime)}@media(max-width:480px){.view-controls button{font-size:11px;padding:6px}.maptop{align-items:flex-start}}
+
+.wind-control{display:grid;grid-template-columns:1fr auto;align-items:center;gap:7px 12px;margin:12px 0 16px;font-size:.84rem}.wind-control output{font-variant-numeric:tabular-nums}.wind-control input{width:100%;accent-color:#e0fc81}.wind-control button{padding:5px 8px;font-size:.74rem}.wind-control button:disabled{opacity:.55}
+.brand{display:flex;align-items:center;gap:10px;letter-spacing:.025em}.brand small{font-size:11px;font-weight:400;letter-spacing:0}.brand img{width:89px;height:auto;display:block}@media(max-width:600px){header .location{display:none}.brand{gap:8px}.brand img{width:74px}}
+.setup-screen .chart,.setup-screen .helm,.setup-screen #signals,.setup-screen #exit-race{display:none}.setup-screen main{max-width:900px;margin:auto}.setup-screen .layout{display:block}.setup-screen aside{display:grid;grid-template-columns:1fr 1fr;align-items:start}.mode,.env-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 0;font-size:.85rem}.mode select,.env-row input{background:#142a2e;color:white;border:1px solid #587075;padding:6px;border-radius:5px}.env-row input{width:64px}.wind-control input{grid-column:1/-1}
+body.sailing{height:100dvh;overflow:hidden;display:flex;flex-direction:column}.sailing header,.sailing aside,.sailing details,.sailing .intro{display:none}.sailing main{display:flex;flex-direction:column;flex:1;min-height:0;width:100%;max-width:none;padding:0}.sailing .layout{display:flex;flex:1;min-height:0}.sailing .chart{flex:1;min-height:0;border-radius:0}.sailing .helm{flex:none;position:static;margin:0;padding:6px 12px calc(6px + env(safe-area-inset-bottom));border-radius:0}.sailing #signals{position:absolute;top:58px;left:12px;display:grid;gap:3px;background:#102426ec;border-radius:8px;padding:7px 10px;color:white;pointer-events:none}.sailing #clock{font: bold 24px monospace}.sailing #ocs{color:#ffe987;font-size:12px;max-width:200px}.sailing #exit-race{position:absolute;right:12px;top:56px}.sig{display:inline-flex;align-items:center;gap:4px;font-size:11px;margin-right:5px}.sig i{width:30px;height:21px;display:inline-block;background:white;position:relative}.sig .P{background:#154bb1}.sig .P:after{content:'';position:absolute;inset:26%;background:white}.sig .X{background:linear-gradient(to right,transparent 41%,#154bb1 41% 59%,transparent 59%),linear-gradient(to bottom,white 39%,#154bb1 39% 61%,white 61%)}.sig .n1,.sig .n2{clip-path:polygon(0 0,100% 24%,100% 76%,0 100%);background:radial-gradient(circle at 38% 50%,#cc2929 0 18%,white 20%)}.sig .n2{background:radial-gradient(circle at 38% 50%,white 0 18%,#154bb1 20%)}@media(max-width:650px){.setup-screen aside{grid-template-columns:1fr}.sailing #signals{top:51px;left:7px}.sailing .maptag{max-width:38vw}.sailing #exit-race{top:52px}}
+
+#right-boat{pointer-events:auto}
+
+
+
+#penalty{max-width:190px;margin-top:3px;padding:6px;border-radius:5px;background:#452822;color:#fff1e3}
+#penalty-rule{display:inline-block;min-width:27px;padding:2px 5px;margin-right:3px;text-align:center;color:white;background:#b92c26;clip-path:polygon(0 0,100% 0,84% 50%,100% 100%,0 100%)}
+#penalty-detail{display:block;font-size:11px;margin:4px 0}
+#serve-penalty{pointer-events:auto;touch-action:none;user-select:none;min-height:32px;padding:4px 7px}
+#race-notice{max-width:170px;color:#ffd19e;font-size:11px}
+#race-notice:empty{display:none}
+
+.classes{grid-template-columns:repeat(2,minmax(0,1fr))}
+body[data-sky=cloudy] #sea3d{filter:saturate(.75) brightness(.84)}
+body[data-sky=rain] #sea3d{filter:saturate(.58) brightness(.72)}
+body.sailing[data-sky=rain] .chart:has(#sea3d:not([hidden])):after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(107deg,transparent 46%,#d4eaf65c 48%,transparent 52%),linear-gradient(111deg,transparent 47%,#d4eaf62c 50%,transparent 54%);background-size:41px 23px,63px 39px;animation:showers .48s linear infinite}
+@keyframes showers{to{background-position:-41px 69px,-63px 78px}}
+.sig .n3{clip-path:polygon(0 0,100% 24%,100% 76%,0 100%);background:linear-gradient(90deg,#bc3535 50%,white 50%)}
+
+.touch-sheet,.touch-helm{display:none}
+.touch-actions{display:grid;gap:3px}
+.touch-actions button{touch-action:none;user-select:none;-webkit-user-select:none}
+.touch-actions button.active{background:var(--lime);color:var(--bg)}
+.sheets:has(#jibLabel:not([hidden])){display:flex;gap:12px}
+.sheets:has(#jibLabel:not([hidden])) label{flex:1}
+.touch-sheet[hidden]{display:none}
+.instrument-row{display:flex;align-items:center;gap:12px;min-width:0}
+#auto-trim{
+  display:grid;place-content:center;justify-items:center;gap:1px;
+  flex:none;width:46px;height:46px;padding:0;border-radius:50%;
+  font-size:11px;font-weight:700;line-height:1;
+}
+#auto-trim[aria-pressed=true]{color:#1b3025;background:var(--lime);border-color:#f1ffc2}
+@media (pointer:coarse) {
+  .sailing .helm{
+    display:grid;
+    grid-template-columns:clamp(54px,18vw,84px) clamp(58px,18vw,82px) minmax(0,1fr);
+    grid-template-areas:"instrument instrument instrument" "actions sheet stick";
+    align-items:center;
+    gap:4px 7px;
+    padding-inline:max(9px,env(safe-area-inset-left)) max(9px,env(safe-area-inset-right));
+    background:#102426;
+  }
+  .sailing .helm:has(#touch-jib-label:not([hidden])){
+    grid-template-columns:clamp(52px,16vw,82px) repeat(2,clamp(49px,15vw,76px)) minmax(0,1fr);
+    grid-template-areas:"instrument instrument instrument instrument" "actions sheet jib stick";
+  }
+  .sailing .steering,.sailing .sheets:has(label){display:none}
+  .sailing .instrument-row{grid-area:instrument;gap:8px}
+  .sailing .telemetry{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    flex:1 1 284px;
+    max-width:284px;
+    min-width:0;
+    margin:0;
+    padding:4px 6px;
+    border:3px solid #35464a;
+    border-radius:8px;
+    background:linear-gradient(#c7d4a1,#b1c18f);
+    color:#15271c;
+    box-shadow:inset 0 0 6px #37482d77,0 1px 4px #0007;
+  }
+  .sailing .speed-display,.sailing .heading-display{text-align:center;min-width:0}
+  .sailing .heading-display{border-left:1px solid #43583866}
+  .sailing .telemetry small{font-size:8px;font-weight:700;letter-spacing:.04em;color:#233726}
+  .sailing .telemetry strong{font:700 17px/1.05 ui-monospace,monospace;letter-spacing:-.045em;margin:1px 0 0}
+  .sailing #compass{display:block;width:91px;height:12px;margin:0 auto;filter:brightness(.32) saturate(.55)}
+  .touch-actions{display:grid;gap:5px;align-self:center}
+  .touch-actions button{min-height:44px;padding:4px 2px;font-size:12px;touch-action:none;user-select:none;-webkit-user-select:none}
+  .touch-actions button.active{background:var(--lime);color:var(--bg)}
+  .touch-sheet,.touch-helm{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:var(--text);font-size:12px;font-weight:600}
+  .touch-sheet{grid-area:sheet;position:relative;padding:0 0 2px}
+  .touch-jib{grid-area:jib}
+  .touch-sheet[hidden]{display:none}
+  .sheet-heading{display:flex;align-items:baseline;gap:3px;white-space:nowrap}
+  .sheet-heading output{color:var(--lime);font-size:11px}
+  .touch-sheet-track{writing-mode:vertical-lr;direction:ltr;appearance:none;width:44px;height:clamp(92px,13dvh,120px);margin:1px 0;background:linear-gradient(#62866c,#62866c) center/6px 100% no-repeat;touch-action:none}
+  .touch-sheet-track::-webkit-slider-thumb{appearance:none;width:31px;height:23px;border:2px solid #f4ffcc;border-radius:10px;background:var(--lime);box-shadow:0 2px 6px #0008}
+  .touch-sheet-track::-moz-range-thumb{width:28px;height:20px;border:2px solid #f4ffcc;border-radius:10px;background:var(--lime)}
+  .touch-sheet-track:disabled{opacity:.45}
+  .sheet-top,.sheet-bottom{font-size:10px;color:var(--muted)}
+  .touch-helm{grid-area:stick;width:100%;min-width:0;max-width:320px;justify-self:end}
+  .joystick{position:relative;display:grid;place-items:center;width:100%;height:clamp(78px,12dvh,109px);border-radius:999px;padding:0;touch-action:none;user-select:none;-webkit-user-select:none;background:linear-gradient(90deg,transparent 49%,#55746b77 49% 51%,transparent 51%),linear-gradient(transparent 49%,#55746b 49% 51%,transparent 51%),radial-gradient(#243d3e,#14292b)}
+  .joystick-knob{width:33px;height:33px;border:2px solid #effac4;border-radius:50%;background:var(--lime);box-shadow:0 3px 7px #0008;transform:translate(var(--stick-x,0px),var(--stick-y,0px));pointer-events:none}
+}
+
+@media (max-width:760px), (pointer:coarse) and (max-height:600px) {
+  .sailing .chart .wind-instrument{left:6px;bottom:32px;gap:4px;padding:3px 5px 3px 2px;border-radius:7px}
+  .sailing .chart .wind-instrument canvas{width:60px;height:60px}
+  .sailing .wind-reads{min-width:0;gap:3px}
+  .sailing .wind-reads strong{font-size:10px;line-height:1.05;margin-top:1px}
+  .sailing .wind-reads small,.sailing .wind-reads span{font-size:9px;line-height:1.05}
+  .sailing #signals{padding:4px 6px;gap:2px;border-radius:6px}
+  .sailing #race-stage{font-size:10px;line-height:1.15}
+  .sailing #clock{font-size:16px;line-height:1.1}
+}
+
+.sailing .chart .mini-map{position:absolute;right:10px;top:96px;width:156px;background:#102a31dc;border:1px solid #89bdc26b;border-radius:8px;pointer-events:none;overflow:hidden}
+.sailing .chart .mini-map canvas{display:block;position:static;width:100%;height:auto;aspect-ratio:156/130}
+#hud-zone{display:block;margin:0;padding:4px 5px;border-top:1px solid #89bdc250;color:#b4f3ff;text-align:center;font-size:10px}
+#hud-zone[hidden]{display:none}
+@media(max-width:760px),(pointer:coarse){
+  .sailing .chart .mini-map{right:7px;top:85px;width:clamp(96px,28vw,120px)}
+}
+
+#venue-title{color:inherit}
+#goal[hidden]{display:none}
+.sailing .maptop{top:8px;left:auto;right:58px;justify-content:flex-end}
+.sailing .maptag{max-width:min(46vw,230px);font-size:10px}
+.sailing .chart .wind-instrument{bottom:32px}
+.sailing #signals{top:8px;left:8px}
+.sailing #exit-race{top:8px;right:8px;display:grid;place-items:center;width:44px;height:44px;padding:0;z-index:2}
+.menu-icon{display:block;width:14px;height:2px;border-radius:2px;background:currentColor;box-shadow:0 -4px currentColor,0 4px currentColor}
+.sailing .chart .mini-map{top:59px;right:8px;padding:0;pointer-events:auto}
+.sailing .chart .mini-map[aria-pressed=true]{border-color:var(--lime)}
+.sailing .mapbottom{justify-content:flex-end}
+.sailing #sound{
+  position:absolute;top:58px;right:8px;width:44px;height:44px;padding:0;
+  display:grid;place-items:center;z-index:2;
+}
+#sound[aria-pressed=true] .mute-slash{display:none}
+@media(pointer:coarse) and (max-height:500px){
+  .touch-sheet-track{height:75px}
+  .joystick{height:72px}
+  .sheet-top,.sheet-bottom{display:none}
+  .touch-actions button{min-height:39px}
+}
+
+#race-menu,#star-rig{
+  width:min(360px,calc(100% - 28px));padding:20px;color:var(--text);
+  border:1px solid #587075;border-radius:12px;background:var(--panel);
+}
+#race-menu::backdrop,#star-rig::backdrop{background:#07181dc9}
+#race-menu h2,#star-rig h2{margin:0;font-size:1.1rem}
+#race-menu p,#star-rig p{margin:8px 0 18px;color:var(--muted);font-size:.9rem}
+.race-menu-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+.race-menu-actions button{min-height:44px}
+.race-menu-actions button[value=exit]{background:var(--lime);color:#172321}
+
+
+.waypoint-display{
+  display:flex;align-items:baseline;justify-content:center;gap:4px;
+  margin-top:2px;font:700 12px/1.15 ui-monospace,monospace;font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+.waypoint-display abbr{text-decoration:none}
+@media(pointer:coarse){
+  .sailing .waypoint-display{font-size:11px}
+}
+
+.sailing .chart .wind-instrument{left:6px;bottom:6px}
+.sailing .chart .mini-map{top:auto;right:6px;bottom:6px}
+.sailing .mapbottom{right:6px;bottom:calc(6px + min(140px,38vw))}
+.sailing .mapbottom:has(#map-note[hidden]){display:none}
+#sailor-tags{position:absolute;inset:0;pointer-events:none}
+.sailor-tag{
+  position:absolute;transform:translate(-50%,-100%);max-width:120px;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap;padding:2px 5px;border-radius:4px;
+  background:#102426e8;color:#f4f8f3;font-size:11px;font-weight:700;
+}
+.room-panel{grid-column:1/-1}
+.room-panel h2{font-size:1rem;margin:0 0 10px}
+.room-panel form{display:grid;gap:7px}
+.room-panel label{font-size:.88rem}
+.room-panel input{
+  min-width:0;background:#142a2e;color:var(--text);border:1px solid #587075;
+  border-radius:5px;padding:8px;font:inherit;margin:0;
+}
+.room-actions{flex-wrap:wrap}
+#room-code{text-transform:uppercase}
+.room-line{display:flex;gap:8px;align-items:center}
+.room-line button{flex:none}
+#room-create,#room-start{background:var(--lime);color:#172321;font-weight:700}
+#invite-code{font:700 1.35rem ui-monospace,monospace;letter-spacing:.12em;color:var(--lime)}
+#room-players{padding-left:18px;line-height:1.8;font-size:.9rem}
+#room-status{margin:8px 0 0;font-size:.85rem;color:var(--lime)}
+.sailing #room-status{display:none}
+
+#star-trim{min-height:44px;flex:none;padding-inline:6px;font-size:11px}
+#star-trim[hidden]{display:none}
+#star-rig label{display:flex;justify-content:space-between;gap:8px;font-size:.88rem}
+#star-rig input{margin:3px 0 14px;min-height:24px}
+#star-rig output{color:var(--lime);font-variant-numeric:tabular-nums}
+#star-rig button{min-height:44px}
+.sig .star::after{content:"★";position:absolute;inset:0;text-align:center;color:#bc2726;font-size:18px;line-height:21px}
+
+.sailing .race-top{
+  position:absolute;z-index:1;top:8px;left:8px;right:58px;
+  display:grid;gap:4px;justify-items:start;pointer-events:none;
+}
+.sailing .race-top .maptop{position:static;width:100%;justify-content:space-between;align-items:flex-start}
+.sailing .race-top .maptag{max-width:none;min-width:0;white-space:normal;line-height:1.3}
+.sailing .race-top .view-controls{margin-left:auto;flex:none;pointer-events:auto}
+.sailing .race-top #signals{position:static;background:none;padding:0;justify-items:start}
+.sailing #signals :is(#ocs,#race-notice):not(:empty),.sailing #flags:not(:empty){
+  background:#102426ea;border-radius:5px;padding:3px 6px
+}
+.sailing #signals :is(#ocs,#flags):empty{display:none}
+.sailing .instruments-row{
+  position:absolute;z-index:1;bottom:6px;left:6px;right:6px;display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;gap:4px;align-items:end;pointer-events:none
+}
+.sailing .chart .instruments-row :is(.wind-instrument,.mini-map){position:static;margin:0}
+.sailing .race-clock{
+  justify-self:center;max-width:100%;min-width:0;box-sizing:border-box;text-align:center;
+  display:grid;gap:2px;padding:5px 7px;border:1px solid #749b9766;border-radius:7px;background:#102426ec
+}
+.sailing .race-clock #race-stage{white-space:normal;line-height:1.12;letter-spacing:.02em}
+.sailing .chart .instruments-row .mini-map{pointer-events:auto}
+@media(max-width:360px){
+  .sailing .chart .instruments-row .wind-instrument canvas{width:45px;height:45px}
+  .sailing .chart .instruments-row .mini-map{width:80px}
+  .sailing .race-clock{padding:3px 4px}
+}
+.brand .brand-plus{font-size:16px;font-weight:500;color:var(--muted)}
+.brand img.sail-station{height:40px;width:auto}
+@media(max-width:480px){.brand{gap:6px}.brand img.sail-station{height:34px}}
+
+.sailing #sea3d{touch-action:none;cursor:grab}.sailing #sea3d:active{cursor:grabbing}
+
+
+#soto-controls:not([hidden]){display:flex;gap:6px;align-items:center;justify-content:center}
+#soto-controls :is(button,select){min-height:44px;min-width:0;font:inherit;font-size:13px;background:#183439;color:#f6f9f5;border:1px solid #72908d;border-radius:6px;padding:4px 8px}
+#spi-toggle[aria-pressed=true]{color:var(--lime);border-color:var(--lime)}
+
+/* Keep the sailing instruments on a single LCD strip. */
+.sailing .telemetry{
+ display:grid;grid-template-columns:auto auto auto auto;align-items:center;gap:0;
+ flex:0 1 auto;max-width:300px;margin:0;padding:2px 3px;
+ color:#192b20;background:linear-gradient(#c8d4a6,#b2c396);
+ border:2px solid #405151;border-radius:5px;
+}
+.sailing .telemetry > div{padding:0 6px;text-align:center;min-width:0}
+.sailing .telemetry > div+div{border-left:1px solid #66765970}
+.sailing .telemetry small{display:block;color:#304231;font:700 9px/1 system-ui,sans-serif;white-space:nowrap}
+.sailing .telemetry abbr{text-decoration:none}
+.sailing .telemetry strong,.sailing #dtw{display:block;font:700 16px/1.03 ui-monospace,monospace;margin:2px 0 0;white-space:nowrap}
+.sailing .waypoint-display{display:grid;grid-template-columns:auto auto;align-items:center;gap:0 2px;margin:0}
+.sailing #dtw-label{grid-column:1/-1}
+.sailing #dtw-cue{font-size:11px}
+.sailing .heading-display{position:relative}
+.sailing #compass{width:48px;height:5px;margin:0 auto;display:block;filter:brightness(.34)}
+.sailing .touch-actions{display:grid;grid-area:commands;grid-template-columns:44px;grid-auto-rows:44px;gap:1px;justify-self:center;align-self:center}
+.sailing .touch-actions button{
+ width:44px;height:44px;min-height:44px;padding:0;border:3px solid transparent;border-radius:50%;
+ background:linear-gradient(#29474a,#193236) padding-box;color:#eef5ef;
+ font:650 9px/1 system-ui,sans-serif;letter-spacing:-.2px;box-shadow:none;
+}
+
+.sailing .touch-actions button.active{background:linear-gradient(#e5ff96,#b6d75d) padding-box;color:#16241b}
+
+.sailing .helm{
+ display:grid;grid-template-columns:46px minmax(0,1fr);
+ grid-template-areas:"instrument instrument" "commands working";gap:3px 8px;align-items:start;
+ padding:3px max(6px,env(safe-area-inset-right)) max(3px,env(safe-area-inset-bottom)) max(6px,env(safe-area-inset-left));
+}
+.sailing .instrument-row{grid-area:instrument;display:block}
+.sailing .telemetry{
+ width:100%;max-width:none;grid-template-columns:repeat(8,minmax(0,1fr));align-items:stretch;
+}
+.sailing .telemetry > div{align-content:center;padding:1px 2px;text-align:center}
+.sailing .telemetry strong,.sailing #dtw{font-size:clamp(11px,3.1vw,16px);line-height:1.05}
+.sailing .waypoint-display{display:block}
+.sailing #dtw-cue{display:inline;font-size:8px}
+.sailing #dtw{display:inline}
+.sailing #compass{width:min(40px,100%);height:3px}
+
+.helm-work{grid-area:working;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"stick tools" "bank bank";align-items:center;gap:0 4px;min-width:0}
+.sailing .helm-work .steering,.sailing .helm-work .touch-helm{grid-area:stick;justify-self:stretch;max-width:none}
+.sailing .helm-work .steering{justify-content:center}
+.sailing .helm-work .touch-helm{position:relative}
+.sailing .touch-helm > span{position:absolute;left:8px;z-index:1;pointer-events:none;color:#c9dad3;font-size:10px}
+.sailing .joystick{height:36px;min-height:36px}
+.sailing .joystick-knob{width:24px;height:24px}
+.trim-tools{grid-area:tools;display:flex;align-items:center;gap:4px}
+.sailing #auto-trim,.sailing #star-trim{min-height:32px;height:32px;min-width:32px;width:auto;border-radius:8px;font-size:10px;padding:0 4px}
+.sailing #auto-trim svg{display:none}
+.sheet-bank{grid-area:bank;min-width:0}
+.sheet-control{display:grid;grid-template-columns:32px minmax(30px,1fr) 94px;align-items:center;gap:4px;min-height:24px;font-size:11px}
+.sheet-control[hidden]{display:none}
+.sheet-control input{min-width:0;width:100%;margin:0;height:24px;accent-color:var(--lime);writing-mode:horizontal-tb;direction:ltr;touch-action:pan-y}
+.sheet-control output{position:static;float:none;text-align:right;line-height:1.1;font:600 10px/1.12 system-ui,sans-serif;color:var(--lime);overflow-wrap:anywhere;white-space:normal}
+#soto-controls:not([hidden]){display:flex;gap:3px;width:auto}
+#soto-controls :is(button,select){min-height:32px;font-size:11px;padding:0 4px}
+#soto-jib,#swan-jib{width:76px}
+@media(max-width:540px){
+ .sailing .helm{gap:2px 5px}
+ 
+ .sailing .touch-actions button{border-width:2px}
+ .helm-work{grid-template-areas:"stick tools" "bank bank"}
+ .sheet-control{grid-template-columns:32px minmax(40px,1fr) 93px;gap:3px}
+ .sailing .telemetry small{font-size:8px}
+}
+@media(pointer:coarse){
+ .sailing .helm-work .steering{display:none}
+ .sailing .helm-work .touch-helm{display:flex}
+}
+
+.brand .origin {font-size:11px;font-weight:600;letter-spacing:0;white-space:nowrap;color:var(--text)}
+.language {margin-top:0;margin-bottom:12px}
+@media(max-width:620px){
+  header:has(.origin){height:auto;min-height:53px;padding-block:6px;flex-wrap:wrap}
+  .brand:has(.origin){max-width:100%;flex-wrap:wrap;row-gap:3px}
+}
+
+#soto-controls select[hidden]{display:none}
+.sig .cs36{background:#142a41;color:white}.sig .cs36::after{content:"36";font:700 8px system-ui}
+
+.sig .tp52{background:#25445a;color:white}.sig .tp52::after{content:"52";font:700 8px system-ui}
+
+#hike-action[hidden]{display:none}
