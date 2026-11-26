@@ -1,0 +1,105 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#111e20"><title>Sail Simulator Pro by Sailing Solutions</title><link rel="stylesheet" href="style.css?v=30">
+<meta name="description" content="Veleje em Santos, Ilhabela e Rio de Janeiro com ILCA, Snipe, Optimist ou Star. Jogue direto no navegador.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://santos-sail.guilherme279095.chatgpt.site/">
+<meta property="og:title" content="Sail Simulator Pro by Sailing Solutions">
+<meta property="og:description" content="Veleje em Santos, Ilhabela e Rio de Janeiro com ILCA, Snipe, Optimist ou Star. Jogue direto no navegador.">
+<meta property="og:image" content="https://santos-sail.guilherme279095.chatgpt.site/santos-sail-thumbnail.jpg?v=3">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta property="og:image:alt" content="Sail Simulator Pro, com um ILCA 7 velejando na Baía de Santos e as marcas Sailing Solutions + SailStation.">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="setup-screen"><header><div class="brand"><span>Sail Simulator Pro</span><small>by</small><img src="sailing-solutions.png" alt="Sailing Solutions"><span class="brand-plus" aria-hidden="true">+</span><img class="sail-station" src="sail-station.png" alt="SailStation"></div><div class="location">23°59′S &nbsp; 46°20′W <span> / </span> SANTOS, BR</div></header>
+<main><div class="intro"><div><p class="eyebrow">SIMULADOR DE REGATA</p><h1><span id="venue-title">Baía de Santos</span><span>.</span></h1></div><div class="status"><i></i><span id="weather-status" role="status">Carregando previsão</span></div></div>
+<div class="layout"><section class="chart" aria-label="Mapa tático da regata"><canvas id="sea3d" role="img" aria-label="Vista 3D em terceira pessoa atrás do veleiro"></canvas><canvas id="map" hidden role="img" aria-label="Carta esquemática com veleiros e percurso"></canvas><div class="race-top"><div class="maptop"><span class="maptag" id="goal">PREPARAÇÃO</span><div class="view-controls"><button id="boat-view" aria-pressed="false">Vista lateral</button></div></div><div id="signals"><button type="button" hidden id="right-boat">Desvirar (V)</button><div id="flags"></div><span id="ocs"></span><div id="penalty" hidden><b><span id="penalty-rule"></span> <span id="penalty-action"></span></b><small id="penalty-detail"></small><button id="serve-penalty" type="button"><span id="penalty-help"></span></button></div><small id="race-notice" role="status"></small></div></div><button id="exit-race" type="button" aria-label="Menu" aria-haspopup="dialog" aria-controls="race-menu"><span class="menu-icon" aria-hidden="true"></span></button><button id="sound" type="button" aria-label="Som" aria-pressed="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4m12 0a4 4 0 0 1 0 6m2.5-8.5a7.5 7.5 0 0 1 0 11"/><path class="mute-slash" d="M3 3l18 18"/></svg></button><div id="sailor-tags" aria-hidden="true"></div><div class="instruments-row"><div class="wind-instrument" aria-label="Instrumento de vento relativo à proa">
+<canvas id="windDial" width="320" height="320" aria-hidden="true"></canvas>
+<div class="wind-reads"><div><small class="wind-app">APARENTE</small><strong id="apparent">—</strong><span id="app-speed">—</span></div><div><small class="wind-true">REAL</small><strong id="true-angle">—</strong><span id="true-speed">—</span></div></div>
+</div><div class="race-clock"><small id="race-stage"></small><strong id="clock">03:00</strong></div><button type="button" class="mini-map" id="zoom" aria-pressed="false" aria-label="Abrir carta tática"><canvas id="tactical-hud" width="312" height="260" role="img" aria-label="Boias, zonas e barcos da raia"></canvas><small id="hud-zone" hidden></small></button></div><div class="mapbottom"><button id="map-note" hidden>Alternar escala da carta</button></div></section>
+<aside><section class="panel"><div class="paneltitle">CLASSE</div><div class="classes"><button id="ilca" aria-pressed="true">ILCA 7<small>Individual</small></button><button id="snipe" aria-pressed="false">Snipe<small>Dupla</small></button><button id="optimist" aria-pressed="false">Optimist<small>Individual</small></button><button id="star" aria-pressed="false">Star<small>Quilha fixa · dupla</small></button></div><label class="mode">Raia <select id="venue"><option value="central">Baía central</option><option value="north">Ponta da Praia · entrada do canal</option><option value="canas">Ilhabela · Ponta das Canas</option><option value="rio">Rio de Janeiro · Santos Dumont</option></select></label><div class="course-choice">Barla Sota · 3 voltas · 5 adversários</div><button class="action" id="start">Entrar na raia <span>↗</span></button><p class="note">3 min de preparação livre + 5 min de procedimento. Galhardetes 1, 2 e 3 para ILCA, Snipe e Optimist. Bandeira da classe para Star.</p></section>
+<section class="panel"><div class="paneltitle">CONDIÇÕES DA RAIA <button id="refresh" title="Atualizar previsão" aria-label="Atualizar previsão">↻</button></div><label class="mode">Tempo na raia<select id="sky-choice"><option value="mixed">Parcialmente nublado</option><option value="clear">Céu limpo</option><option value="cloudy">Encoberto</option><option value="rain">Chuva</option></select></label><label class="mode">Condições de navegação <select id="env-mode"><option value="forecast">Previsão local</option><option value="manual">Ajuste manual</option></select></label><div class="env-row"><button type="button" id="wind-shift" aria-pressed="false">Vento rondado <span id="wind-shift-status">Desligado</span></button></div><div id="manual-env" hidden><div class="wind-control"><label for="wind-setting">Intensidade do vento</label><output id="wind-setting-value" for="wind-setting"></output><input type="range" id="wind-setting" min="0" max="35" step="0.5" value="11"></div><label class="env-row">Nível da maré (m)<input id="level" type="number" min="-2" max="3" step=".1" value="0"></label><label class="env-row">Ondulação (m)<input id="swell-height" type="number" min="0" max="4" step=".1" value=".5"></label><label class="env-row">Período (s)<input id="swell-period" type="number" min="2" max="20" step=".5" value="7"></label><label class="env-row">Direção da ondulação (° de origem)<input id="swell-direction" type="number" inputmode="numeric" min="0" max="360" step="1" value="155"></label></div><div class="metrics"><div><small>VENTO / RAJADA</small><strong id="wind"></strong></div><div><small>ONDULAÇÃO</small><strong id="wave"></strong></div><div><small>NÍVEL DO MAR</small><strong id="tide"></strong></div><div><small>CORRENTE</small><strong id="current"></strong></div></div><div id="source" class="note"></div><a class="source-link" href="https://open-meteo.com/en/docs/marine-weather-api" target="_blank" rel="noopener">Open-Meteo ↗</a></section>
+<section class="panel room-panel" aria-labelledby="friends-title">
+  <h2 id="friends-title">Jogue com os amigos</h2>
+  <div id="room-entry">
+    <form id="room-form">
+      <label for="sailor-name">Seu nome</label>
+      <input id="sailor-name" maxlength="24" placeholder="Nome no barco" autocomplete="nickname" required>
+      <button type="submit" id="room-create" value="create">Criar sala privada</button>
+      <label for="room-code">Código da sala</label>
+      <div class="room-line">
+        <input id="room-code" maxlength="7" placeholder="7 caracteres" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Código da sala">
+        <button type="submit" id="room-join" value="join">Entrar</button>
+      </div>
+    </form>
+    <p class="note">Até 6 velejadores. A sala usa a raia, a classe e as condições selecionadas acima pelo anfitrião.</p>
+  </div>
+  <div id="room-lobby" hidden>
+    <div class="room-line"><strong id="invite-code"></strong><button id="room-copy" type="button">Copiar código</button></div>
+    <p class="note" id="room-summary"></p>
+    <ul id="room-players" aria-label="Velejadores na sala"></ul>
+    <div class="room-line room-actions">
+      <button id="room-leave" type="button">Sair da sala</button>
+      <button id="room-configure" type="button" hidden>Atualizar condições</button>
+      <button id="room-start" type="button" hidden>Iniciar regata</button>
+    </div>
+  </div>
+  <p id="room-status" role="status" hidden></p>
+</section>
+<section class="panel traffic" id="santos-traffic"><div class="paneltitle">TRÁFEGO DE NAVIOS</div><a href="https://www.marinetraffic.com/en/ais/home/centerx:-46.333/centery:-24.012/zoom:12" target="_blank" rel="noopener">MarineTraffic · mapa AIS ao vivo ↗</a><div class="note">Consulta externa. Sobreposição AIS depende de acesso à API MarineTraffic.</div></section></aside></div>
+<section class="helm"><div class="instrument-row"><div class="telemetry"><div class="speed-display"><small>VELOCIDADE</small><strong id="speed">0,0 nós</strong><div class="waypoint-display"><small id="dtw-label"><abbr title="Distance to Waypoint" aria-label="Distância até o próximo ponto">DTW</abbr></small><span id="dtw" aria-labelledby="dtw-label">—</span><span id="dtw-cue" aria-hidden="true"></span></div></div><div class="heading-display"><small>RUMO DA PROA · NORTE VERDADEIRO</small><strong id="heading">000°</strong><canvas id="compass" width="376" height="50" aria-hidden="true"></canvas></div></div>
+  <button id="auto-trim" type="button" aria-label="Trimagem automática" aria-pressed="false">
+    <svg width="18" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v15H4c3.8-4.2 6.5-9.4 8-15Zm2.5 4 4.5 11h-4.5M3 20h18l-3 2H6Z"/></svg>
+    <span>Auto</span>
+  </button>
+  <button id="star-trim" type="button" aria-haspopup="dialog" aria-controls="star-rig" hidden>Aparelho</button>
+</div><div class="touch-actions">
+  <button type="button" data-hold="Space" aria-label="Segure para escorar">Escora</button>
+  <button type="button" data-hold="KeyB" aria-label="Segure para caçar a grande e solte para folgar">Bombar</button>
+</div><label class="touch-sheet">
+  <span class="sheet-heading">Main <output id="touch-sheet-value">27%</output></span>
+  <span class="sheet-top" aria-hidden="true">Caçar</span>
+  <input id="touch-sheet" class="touch-sheet-track" type="range" min="0" max="100" value="27" aria-label="Escota da vela grande, para cima caça e para baixo folga">
+  <span class="sheet-bottom" aria-hidden="true">Folgar</span>
+</label>
+<label id="touch-jib-label" class="touch-sheet touch-jib" hidden>
+  <span class="sheet-heading">Jib <output id="touch-jib-value">30%</output></span>
+  <span class="sheet-top" aria-hidden="true">Caçar</span>
+  <input id="touch-jib" class="touch-sheet-track" type="range" min="0" max="100" value="30" aria-label="Escota da buja, para cima caça e para baixo folga">
+  <span class="sheet-bottom" aria-hidden="true">Folgar</span>
+</label>
+<div class="touch-helm">
+  <span>Leme</span>
+  <button id="touch-helm" class="joystick" type="button" aria-label="Joystick do leme. Arraste para o lado em que quer virar."><span class="joystick-knob" aria-hidden="true"></span></button>
+</div>
+<div class="steering"><button data-turn="-1" aria-label="Mover a cana para bombordo">←</button><button data-turn="1" aria-label="Mover a cana para boreste">→</button><small>CANA DO LEME</small></div><div class="sheets"><label>Main <output id="mainValue"></output><input id="mainTrim" type="range" min="0" max="100" value="27"></label><label id="jibLabel" hidden>Jib <output id="jibValue"></output><input id="jibTrim" type="range" min="0" max="100" value="30"></label></div></section>
+<details><summary>Como velejar</summary><p>No teclado, ← guina a proa a bombordo e → a boreste, com seguimento à vante. Os botões na tela movem a cana do leme. Use ↑ para caçar a vela grande e ↓ para folgar, ou ajuste pelo controle deslizante. Em caso de capotamento, pressione V ou toque em Desvirar para recuperar o barco. Segure Espaço para intensificar a escora a barlavento e solte para recolher o corpo. Na popa com vento fraco, segure B para caçar rapidamente a grande. A escota fica caçada enquanto B estiver pressionado. Solte B para folgar até a regulagem anterior. Quando receber uma penalidade, afaste-se da flotilha. Segure P ou o botão de penalidade enquanto usa o leme para completar os giros no mesmo sentido, com um bordo e um jibe em cada volta. No Snipe e no Star, Q caça a buja e E folga. No celular, arraste o leme para o lado em que quer guinar. No mostrador de vento, 0° é a proa, BB é bombordo e BE é boreste. O vento real usa a água como referência.</p><p>Cruze a largada rumo a barlavento. Deixe as boias 1 e 1A por bombordo e desça entre 2S e 2P. Nas duas primeiras voltas, contorne uma das boias do portão pelo lado de fora e volte a subir. Na terceira passagem pelo portão, siga para a linha separada de chegada. Em água plana, procure 38°–43° de vento real na orça de ILCA 7 e 36°–42° no Snipe. No ILCA, busque 145°–165° na popa com vento fraco ou médio e 135°–150° em planeio. O Snipe arma o tangão automaticamente a partir de 165° de vento real. Ao arribar, folgue até começar a panejar e cace só até a vela encher. Em rajadas, folgue para aliviar o adernamento. A linha tracejada mostra o próximo ponto do percurso.</p></details>
+</main>
+<dialog id="race-menu" aria-labelledby="race-menu-title" aria-describedby="race-menu-description">
+  <form method="dialog">
+    <h2 id="race-menu-title">Voltar ao menu principal?</h2>
+    <p id="race-menu-description">A regata atual será encerrada.</p>
+    <div class="race-menu-actions">
+      <button autofocus value="continue">Continuar na raia</button>
+      <button value="exit">Voltar ao menu</button>
+    </div>
+  </form>
+</dialog>
+<dialog id="star-rig" aria-labelledby="star-rig-title">
+  <form method="dialog">
+    <h2 id="star-rig-title">Regulagens do Star</h2>
+    <p id="star-rig-mode"></p>
+    <label for="star-outhaul"><span>Caça da esteira</span><output id="star-outhaul-value">35%</output></label>
+    <input id="star-outhaul" type="range" min="0" max="100" value="35">
+    <label for="star-cunningham"><span>Cunningham</span><output id="star-cunningham-value">18%</output></label>
+    <input id="star-cunningham" type="range" min="0" max="100" value="18">
+    <label for="star-runner"><span>Brandal volante</span><output id="star-runner-value">35%</output></label>
+    <input id="star-runner" type="range" min="0" max="100" value="35">
+    <p class="note">Na orça, aumente a tensão conforme o vento aperta. Na popa, alivie os controles para dar volume à vela. Os valores são relativos (0–100%).</p>
+    <p class="note">Referência do jogo em água plana: com 12 nós de vento real, procure cerca de 42° na orça e 175° na popa. No vento forte, experimente 160° de vento real para ganhar velocidade em direção à boia de sotavento.</p>
+    <p class="note">Na popa, segure Escora para o proeiro deslocar o peso junto ao mastro em fase com as ondas. A manobra ajuda a pegar a onda e a aliviar a proa no fim da surfada.</p>
+    <button value="close">Voltar à raia</button>
+  </form>
+</dialog>
+<script src="water.js?v=16" defer></script><script src="scene.js?v=34" defer></script><script src="race-rules.js?v=25" defer></script><script src="multiplayer.js?v=23" defer></script><script src="game.js?v=31" defer></script></body></html>
